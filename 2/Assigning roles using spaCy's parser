@@ -6,7 +6,7 @@ def find_parent_item(word):
     # Iterate over the word's ancestors
     for parent in word.ancestors:
         # Check for an "item" entity
-        if entity_type(word) == "item":
+        if entity_type(parent) == "item":
             return parent.text
     return None
 
@@ -17,7 +17,7 @@ def assign_colors(doc):
         # Check for "color" entities
         if entity_type(word) == "color":
             # Find the parent
-            item =  word
+            item =  find_parent_item(word)
             print("item: {0} has color : {1}".format(item, word))
 
 # Assign the colors
